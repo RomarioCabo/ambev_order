@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: order
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+logging:
+  level:
+    org:
+      springframework:
+        cache: TRACE
+
+springdoc:
+  swagger-ui:
+    path: "/swagger-ui.html"
+    enabled: true
+    operations-sorter: "method"
+  packagesToScan: com.br.obitus_manager.application.controller
+
+server:
+  tomcat:
+    max-http-form-post-size: 100MB
+  port: 8091
+  shutdown: graceful
+
+rabbitmq:
+  exchange:
+    name: ambev-order-exchange
+  queue:
+    name: ambev-order-queue
+  routing:
+    json:
+      key: ambev-order-queue-routing-json-key

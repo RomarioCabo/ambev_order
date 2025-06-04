@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:postgresql://localhost:5442/order_db
+      username: order_user
+      password: order_password
+      connection-test-query: SELECT 1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+logging:
+  level:
+    org.springframework.amqp.rabbit.core.RabbitTemplate: debug
+    org.springframework.amqp.rabbit.connection: debug
+    com.rabbitmq.client: debug
+    org.springframework:
+      cache: trace
+      amqp.rabbit.core: info

@@ -1,0 +1,37 @@
+version: '3.5'
+
+services:
+
+  local-order-db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: "order_db"
+      POSTGRES_USER: "order_user"
+      POSTGRES_PASSWORD: "order_password"
+    ports:
+      - "5442:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data2
+    container_name: local-order-db
+    networks:
+      - order-shared-net
+
+  rabbitmq:
+    image: rabbitmq:3.9-management-alpine
+    hostname: my-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - order-shared-net
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+volumes:
+  postgres-data:
+    external: false
+
+networks:
+  order-shared-net:
+    name: order-shared-net
