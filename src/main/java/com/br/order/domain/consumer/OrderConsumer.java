@@ -36,6 +36,8 @@ public class OrderConsumer {
             log.info("Order before calculate: {}", orderResponse);
 
             orderService.save(orderResponse);
+
+            orderService.receiveOrder(orderResponse);
         } catch (Exception e) {
             log.info("Error to consume: {}", e.getMessage());
         }

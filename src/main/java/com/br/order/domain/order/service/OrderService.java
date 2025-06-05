@@ -11,4 +11,6 @@ public interface OrderService {
     OrderResponse calculateValueOfProducts(OrderResponse order);
 
     void save(OrderResponse order);
+
+    void receiveOrder(OrderResponse request);
 }

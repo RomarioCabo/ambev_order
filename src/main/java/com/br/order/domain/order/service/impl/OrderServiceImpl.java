@@ -3,6 +3,7 @@ package com.br.order.domain.order.service.impl;
 import com.br.order.domain.DatabaseProvider;
 import com.br.order.domain.order.OrderResponse;
 import com.br.order.domain.order.service.OrderService;
+import com.br.order.domain.provider.OrderProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
     private final DatabaseProvider databaseProvider;
+    private final OrderProvider orderProvider;
 
     @Override
     public boolean existsOrderById(UUID orderId) {
@@ -36,5 +38,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void save(OrderResponse order) {
         databaseProvider.saveOrder(order);
+    }
+
+    @Override
+    public void receiveOrder(OrderResponse request) {
+        orderProvider.receiveOrder(request);
     }
 }
