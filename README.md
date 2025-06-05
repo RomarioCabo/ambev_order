@@ -10,8 +10,11 @@ Este projeto representa o **consumidor de pedidos** de uma arquitetura baseada e
 - **Spring Boot 3**
 - **Mensageria com RabbitMQ**
 - **FeignClient**
+- **Flyway para versionamento do Banco de dados**
+- **Banco de dados: PostgreSQL, H2**
 - **Maven**
 - **Lombok**
+- **JUnit 5 para testes**
 - **Docker & Docker Compose**
 
 ---
